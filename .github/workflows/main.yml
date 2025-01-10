@@ -1,0 +1,24 @@
+name: Build Stardew Valley Mod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0'
+
+      - name: Build the mod
+        run: |
+          dotnet build
+          
